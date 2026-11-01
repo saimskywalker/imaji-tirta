@@ -3,16 +3,16 @@
 //! Every expected value is hand calculated in the comment above the assertion.
 //! Units follow the crate convention: m, m², m/s, m³/s.
 
-use imaji_kp_hydraulics::check::CheckStatus;
-use imaji_kp_hydraulics::design::{
+use imaji_tirta::check::CheckStatus;
+use imaji_tirta::design::{
     design_channel, efficient_trapezoid, ChannelDesignInput, SectionProportion,
 };
-use imaji_kp_hydraulics::error::KpError;
-use imaji_kp_hydraulics::freeboard::{
+use imaji_tirta::error::KpError;
+use imaji_tirta::freeboard::{
     FixedFreeboard, FreeboardFn, FreeboardRule, FreeboardStep, FreeboardTable,
 };
-use imaji_kp_hydraulics::uniform_flow::{FlowRegime, NormalDepthOptions, VelocityLimits};
-use imaji_kp_hydraulics::units::{Discharge, Length, ManningN, SideSlope, Slope};
+use imaji_tirta::uniform_flow::{FlowRegime, NormalDepthOptions, VelocityLimits};
+use imaji_tirta::units::{Discharge, Length, ManningN, SideSlope, Slope};
 
 fn close(actual: f64, expected: f64, tolerance: f64) -> bool {
     (actual - expected).abs() <= tolerance

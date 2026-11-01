@@ -3,7 +3,7 @@
 //! Run with:
 //!
 //! ```text
-//! cargo run -p imaji-kp-hydraulics --example trapezoidal_channel
+//! cargo run -p imaji-tirta --example trapezoidal_channel
 //! ```
 //!
 //! The figures used here are illustrative. The freeboard rule, the roughness,
@@ -11,11 +11,11 @@
 //! engineer reads off the governing Kriteria Perencanaan. This example is a
 //! calculation aid, not a design.
 
-use imaji_kp_hydraulics::design::{design_channel, ChannelDesignInput, SectionProportion};
-use imaji_kp_hydraulics::freeboard::FreeboardTable;
-use imaji_kp_hydraulics::uniform_flow::{NormalDepthOptions, VelocityLimits};
-use imaji_kp_hydraulics::units::{Discharge, Length, ManningN, SideSlope, Slope};
-use imaji_kp_hydraulics::KpError;
+use imaji_tirta::design::{design_channel, ChannelDesignInput, SectionProportion};
+use imaji_tirta::freeboard::FreeboardTable;
+use imaji_tirta::uniform_flow::{NormalDepthOptions, VelocityLimits};
+use imaji_tirta::units::{Discharge, Length, ManningN, SideSlope, Slope};
+use imaji_tirta::KpError;
 
 fn main() -> Result<(), KpError> {
     // Saluran sekunder (secondary canal), unlined, in a stable clay loam.

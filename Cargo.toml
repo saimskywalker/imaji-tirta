@@ -1,10 +1,10 @@
 [package]
-name = "imaji-kp-hydraulics"
+name = "imaji-tirta"
 version = "0.1.0"
 edition = "2021"
 rust-version = "1.75"
 license = "MIT"
-repository = "https://github.com/saimskywalker/irigasi-imaji-kp-hydraulics"
+repository = "https://github.com/saimskywalker/imaji-tirta"
 authors = ["Setyo Aji Imam Maliki <15120878+saimskywalker@users.noreply.github.com>"]
 description = "Indonesian irrigation design calculations (Kriteria Perencanaan KP series) in strict SI units"
 readme = "README.md"

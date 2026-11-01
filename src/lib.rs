@@ -76,10 +76,10 @@
 //! Sizing a secondary canal for 1.5 m³/s and reading the checks:
 //!
 //! ```
-//! use imaji_kp_hydraulics::design::{design_channel, ChannelDesignInput, SectionProportion};
-//! use imaji_kp_hydraulics::freeboard::FreeboardTable;
-//! use imaji_kp_hydraulics::uniform_flow::{NormalDepthOptions, VelocityLimits};
-//! use imaji_kp_hydraulics::units::{Discharge, ManningN, SideSlope, Slope};
+//! use imaji_tirta::design::{design_channel, ChannelDesignInput, SectionProportion};
+//! use imaji_tirta::freeboard::FreeboardTable;
+//! use imaji_tirta::uniform_flow::{NormalDepthOptions, VelocityLimits};
+//! use imaji_tirta::units::{Discharge, ManningN, SideSlope, Slope};
 //!
 //! let freeboard = FreeboardTable::default();
 //! let design = design_channel(&ChannelDesignInput {
@@ -97,7 +97,7 @@
 //!
 //! assert!(design.all_checks_pass());
 //! println!("{design}");
-//! # Ok::<(), imaji_kp_hydraulics::KpError>(())
+//! # Ok::<(), imaji_tirta::KpError>(())
 //! ```
 
 pub mod check;

@@ -3,12 +3,12 @@
 //! Every expected value is hand calculated in the comment above the assertion,
 //! using g = 9.81 m/s². Units follow the crate convention: m, m², m/s, m³/s.
 
-use imaji_kp_hydraulics::error::KpError;
-use imaji_kp_hydraulics::section::{Rectangle, Section, Trapezoid, Triangle};
-use imaji_kp_hydraulics::uniform_flow::{
+use imaji_tirta::error::KpError;
+use imaji_tirta::section::{Rectangle, Section, Trapezoid, Triangle};
+use imaji_tirta::uniform_flow::{
     froude_number, normal_depth, uniform_flow, FlowRegime, NormalDepthOptions, VelocityLimits,
 };
-use imaji_kp_hydraulics::units::{Discharge, Length, ManningN, SideSlope, Slope, Velocity};
+use imaji_tirta::units::{Discharge, Length, ManningN, SideSlope, Slope, Velocity};
 
 fn close(actual: f64, expected: f64, tolerance: f64) -> bool {
     (actual - expected).abs() <= tolerance
@@ -325,7 +325,7 @@ fn a_steep_lined_chute_runs_supercritical() {
 
 #[test]
 fn velocity_limits_produce_a_pass_and_a_fail() {
-    use imaji_kp_hydraulics::check::{CheckList, CheckStatus};
+    use imaji_tirta::check::{CheckList, CheckStatus};
 
     let limits = VelocityLimits::from_range(0.30, 0.70).unwrap();
 
@@ -343,7 +343,7 @@ fn velocity_limits_produce_a_pass_and_a_fail() {
 
 #[test]
 fn an_omitted_velocity_limit_is_recorded_as_not_checked() {
-    use imaji_kp_hydraulics::check::{CheckList, CheckStatus};
+    use imaji_tirta::check::{CheckList, CheckStatus};
 
     let limits = VelocityLimits::new(None, Some(Velocity::new(0.70).unwrap()));
     let checks = limits.check(Velocity::new(0.05).unwrap());

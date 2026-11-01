@@ -75,6 +75,6 @@ failure recorded, so the engineer can see by how much a limit is exceeded.
 
 Irrigation hydraulics following KP-01 to KP-07. Structural member design
 belongs in
-[imaji-structural-design](https://github.com/saimskywalker/sni-imaji-structural-design).
+[imaji-structural-sni](https://github.com/saimskywalker/imaji-structural-sni).
 The crate has no dependencies beyond the standard library, and a PR that adds
 one needs a strong reason.
