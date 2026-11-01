@@ -162,8 +162,8 @@ impl fmt::Display for TertiaryBlock {
 /// # Examples
 ///
 /// ```
-/// use imaji_kp_hydraulics::tertiary::{assess_tertiary_block, TertiaryCriteria};
-/// use imaji_kp_hydraulics::units::{Hectares, Length};
+/// use imaji_tirta::tertiary::{assess_tertiary_block, TertiaryCriteria};
+/// use imaji_tirta::units::{Hectares, Length};
 ///
 /// // 96 ha block, tertiary channel 1 200 m, longest quaternary channel 420 m.
 /// // Quaternary blocks: ceil(96 / 15) = 7, mean area 96 / 7 = 13.71 ha.
@@ -176,7 +176,7 @@ impl fmt::Display for TertiaryBlock {
 /// assert_eq!(block.quaternary_blocks, 7);
 /// assert!((block.mean_quaternary_area.value() - 13.714_29).abs() < 1e-4);
 /// assert!(block.all_checks_pass());
-/// # Ok::<(), imaji_kp_hydraulics::KpError>(())
+/// # Ok::<(), imaji_tirta::KpError>(())
 /// ```
 pub fn assess_tertiary_block(
     area: Hectares,
@@ -251,13 +251,13 @@ pub fn assess_tertiary_block(
 /// # Examples
 ///
 /// ```
-/// use imaji_kp_hydraulics::tertiary::blocks_in_command_area;
-/// use imaji_kp_hydraulics::units::Hectares;
+/// use imaji_tirta::tertiary::blocks_in_command_area;
+/// use imaji_tirta::units::Hectares;
 ///
 /// // 640 ha served by blocks of 50 ha: ceil(640 / 50) = 13 blocks.
 /// let n = blocks_in_command_area(Hectares::new(640.0)?, Hectares::new(50.0)?)?;
 /// assert_eq!(n, 13);
-/// # Ok::<(), imaji_kp_hydraulics::KpError>(())
+/// # Ok::<(), imaji_tirta::KpError>(())
 /// ```
 pub fn blocks_in_command_area(command_area: Hectares, block_area: Hectares) -> Result<u32> {
     let command = positive("command_area", command_area.value())?;

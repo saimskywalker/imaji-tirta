@@ -141,9 +141,9 @@ pub struct UniformFlow {
 /// # Examples
 ///
 /// ```
-/// use imaji_kp_hydraulics::section::Trapezoid;
-/// use imaji_kp_hydraulics::uniform_flow::uniform_flow;
-/// use imaji_kp_hydraulics::units::{Length, ManningN, SideSlope, Slope};
+/// use imaji_tirta::section::Trapezoid;
+/// use imaji_tirta::uniform_flow::uniform_flow;
+/// use imaji_tirta::units::{Length, ManningN, SideSlope, Slope};
 ///
 /// // b = 2.0 m, m = 1.5, h = 1.0 m, n = 0.025, S = 0.0004
 /// // A = (2.0 + 1.5) × 1.0 = 3.5 m²
@@ -159,7 +159,7 @@ pub struct UniformFlow {
 ///     Slope::new(0.0004)?,
 /// )?;
 /// assert!((flow.discharge.value() - 2.045461).abs() < 1e-6);
-/// # Ok::<(), imaji_kp_hydraulics::KpError>(())
+/// # Ok::<(), imaji_tirta::KpError>(())
 /// ```
 pub fn uniform_flow(
     section: &dyn Section,
@@ -210,13 +210,13 @@ pub fn uniform_flow(
 /// # Examples
 ///
 /// ```
-/// use imaji_kp_hydraulics::uniform_flow::froude_number;
-/// use imaji_kp_hydraulics::units::{Length, Velocity};
+/// use imaji_tirta::uniform_flow::froude_number;
+/// use imaji_tirta::units::{Length, Velocity};
 ///
 /// // V = 0.6 m/s, D = 0.8 m: Fr = 0.6 / sqrt(9.81 × 0.8) = 0.6 / 2.801428 = 0.2141765
 /// let fr = froude_number(Velocity::new(0.6)?, Length::new(0.8)?)?;
 /// assert!((fr - 0.2141765).abs() < 1e-7);
-/// # Ok::<(), imaji_kp_hydraulics::KpError>(())
+/// # Ok::<(), imaji_tirta::KpError>(())
 /// ```
 pub fn froude_number(velocity: Velocity, hydraulic_depth: Length) -> Result<f64> {
     let d = positive("hydraulic_depth", hydraulic_depth.value())?;
@@ -303,9 +303,9 @@ pub struct NormalDepthSolution {
 /// # Examples
 ///
 /// ```
-/// use imaji_kp_hydraulics::section::Trapezoid;
-/// use imaji_kp_hydraulics::uniform_flow::{normal_depth, uniform_flow, NormalDepthOptions};
-/// use imaji_kp_hydraulics::units::{Discharge, Length, ManningN, SideSlope, Slope};
+/// use imaji_tirta::section::Trapezoid;
+/// use imaji_tirta::uniform_flow::{normal_depth, uniform_flow, NormalDepthOptions};
+/// use imaji_tirta::units::{Discharge, Length, ManningN, SideSlope, Slope};
 ///
 /// // Round trip: the depth that carries the discharge computed at h = 1.0 m
 /// // must come back as 1.0 m.
@@ -316,7 +316,7 @@ pub struct NormalDepthSolution {
 ///
 /// let solved = normal_depth(&section, q, n, s, NormalDepthOptions::default())?;
 /// assert!((solved.depth.value() - 1.0).abs() < 1e-5);
-/// # Ok::<(), imaji_kp_hydraulics::KpError>(())
+/// # Ok::<(), imaji_tirta::KpError>(())
 /// ```
 pub fn normal_depth(
     section: &dyn Section,
@@ -470,9 +470,9 @@ impl VelocityLimits {
     /// # Examples
     ///
     /// ```
-    /// use imaji_kp_hydraulics::check::{CheckList, CheckStatus};
-    /// use imaji_kp_hydraulics::uniform_flow::VelocityLimits;
-    /// use imaji_kp_hydraulics::units::Velocity;
+    /// use imaji_tirta::check::{CheckList, CheckStatus};
+    /// use imaji_tirta::uniform_flow::VelocityLimits;
+    /// use imaji_tirta::units::Velocity;
     ///
     /// let limits = VelocityLimits::from_range(0.30, 0.70)?;
     /// let checks = limits.check(Velocity::new(0.58)?);
@@ -480,7 +480,7 @@ impl VelocityLimits {
     ///
     /// let checks = limits.check(Velocity::new(0.95)?);
     /// assert_eq!(checks[1].status, CheckStatus::Fail);
-    /// # Ok::<(), imaji_kp_hydraulics::KpError>(())
+    /// # Ok::<(), imaji_tirta::KpError>(())
     /// ```
     pub fn check(&self, velocity: Velocity) -> Vec<Check> {
         vec![

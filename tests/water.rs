@@ -3,12 +3,10 @@
 //! Every expected value is hand calculated in the comment above the assertion.
 //! Depth rates are mm/day, areas hectares, discharges m³/s.
 
-use imaji_kp_hydraulics::error::KpError;
-use imaji_kp_hydraulics::tertiary::{
-    assess_tertiary_block, blocks_in_command_area, TertiaryCriteria,
-};
-use imaji_kp_hydraulics::units::{Days, DepthRate, Discharge, Hectares, Length, Ratio, WaterLayer};
-use imaji_kp_hydraulics::water::{
+use imaji_tirta::error::KpError;
+use imaji_tirta::tertiary::{assess_tertiary_block, blocks_in_command_area, TertiaryCriteria};
+use imaji_tirta::units::{Days, DepthRate, Discharge, Hectares, Length, Ratio, WaterLayer};
+use imaji_tirta::water::{
     assess_short_supply, crop_water_requirement, diversion_requirement, effective_rainfall,
     land_preparation_requirement, net_field_requirement, open_water_evaporation, EfficiencyChain,
     RotationCriteria, SupplyMode, DEFAULT_EO_FACTOR, DEFAULT_RICE_RAINFALL_COEFFICIENT,
@@ -333,7 +331,7 @@ fn an_oversized_tertiary_block_fails_its_checks() {
     let failed: Vec<_> = block
         .checks
         .iter()
-        .filter(|c| c.status == imaji_kp_hydraulics::check::CheckStatus::Fail)
+        .filter(|c| c.status == imaji_tirta::check::CheckStatus::Fail)
         .map(|c| c.name)
         .collect();
     assert!(failed.contains(&"tertiary block area"));

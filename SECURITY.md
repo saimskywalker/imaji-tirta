@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-`imaji-kp-hydraulics` is not yet published to crates.io. Only the latest `0.1.x`
+`imaji-tirta` is not yet published to crates.io. Only the latest `0.1.x`
 on `main` gets security fixes.
 
 | Version | Supported |
@@ -14,7 +14,7 @@ on `main` gets security fixes.
 Please do not open a public issue for a vulnerability.
 
 Report it privately through GitHub's private vulnerability reporting: open the
-[Security tab](https://github.com/saimskywalker/irigasi-imaji-kp-hydraulics/security)
+[Security tab](https://github.com/saimskywalker/imaji-tirta/security)
 and choose "Report a vulnerability". Only the maintainer can see the report.
 
 This crate is pure calculation with no I/O and no dependencies, so the

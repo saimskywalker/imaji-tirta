@@ -144,15 +144,15 @@ impl FreeboardRule for FreeboardTable {
 /// # Examples
 ///
 /// ```
-/// use imaji_kp_hydraulics::freeboard::{FreeboardFn, FreeboardRule};
-/// use imaji_kp_hydraulics::units::{Discharge, Length};
+/// use imaji_tirta::freeboard::{FreeboardFn, FreeboardRule};
+/// use imaji_tirta::units::{Discharge, Length};
 ///
 /// // A project rule of one third of the flow depth is not expressible as a
 /// // function of discharge alone, but a continuous curve on discharge is.
 /// let rule = FreeboardFn::new(|q: Discharge| Length::new(0.35 + 0.05 * q.value().sqrt()));
 /// let f = rule.freeboard(Discharge::new(4.0)?)?;
 /// assert!((f.value() - 0.45).abs() < 1e-12);
-/// # Ok::<(), imaji_kp_hydraulics::KpError>(())
+/// # Ok::<(), imaji_tirta::KpError>(())
 /// ```
 pub struct FreeboardFn<F>
 where
