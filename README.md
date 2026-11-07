@@ -1,5 +1,7 @@
 # imaji-tirta — Rust crate for irrigation hydraulics (Kriteria Perencanaan KP-01–07)
 
+**Status:** in maintenance, as a library only. Fixes and reviews continue; the browser calculator in the open issues is not being built yet.
+
 Irrigation design calculations following the Indonesian Kriteria Perencanaan
 (KP) irrigation planning criteria, KP-01 to KP-07, published by the Direktorat
 Jenderal Sumber Daya Air, Kementerian Pekerjaan Umum dan Perumahan Rakyat.
