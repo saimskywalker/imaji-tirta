@@ -30,9 +30,13 @@ jobs:
       - name: Code changes come with tests (waive with no-tests-needed)
         if: ${{ !cancelled() && !contains(github.event.pull_request.labels.*.name, 'no-tests-needed') }}
         run: |
-          files="$(jq -r '.[].filename' "$RUNNER_TEMP/files.json")"
-          if grep -Eq "$CODE" <<<"$files" && ! grep -Eq "$TESTS" <<<"$files"; then
-            echo "::error title=Tests required::This PR changes src/ but no test. Add a test under tests/."
+          # A test is a change under tests/ or an added #[test] in a .rs file, so an inline
+          # #[cfg(test)] module in src/ counts too (a path cannot tell it apart from code).
+          code="$(jq 'any(.[]; .filename | test(env.CODE))' "$RUNNER_TEMP/files.json")"
+          tests="$(jq 'any(.[]; (.filename | test(env.TESTS)) or ((.filename | endswith(".rs"))
+            and (.patch // "" | split("\n") | any(test("^\\+\\s*#\\[test\\]")))))' "$RUNNER_TEMP/files.json")"
+          if [ "$code" = true ] && [ "$tests" = false ]; then
+            echo "::error title=Tests required::This PR changes src/ but adds no test. Add a #[test] or a file under tests/."
             exit 1
           fi
 

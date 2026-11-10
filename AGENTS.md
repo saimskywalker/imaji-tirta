@@ -82,9 +82,10 @@ Stop and ask the person you work for to provide them:
 
 ## Tests (checked)
 
-- Every change to `src/` comes with a test change under `tests/`. A bug fix
-  has a test that fails without the fix; check that it does before you open
-  the pull request.
+- Every change to `src/` comes with a test: a new `#[test]` or a change
+  under `tests/`, where the existing tests live. The check looks for an added
+  `#[test]` line or a changed `tests/` file. A bug fix has a test that fails
+  without the fix; check that it does before you open the pull request.
 - A new calculation has a worked-example test with its source (see "Stop
   and ask the human").
 

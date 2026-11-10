@@ -18,8 +18,8 @@ Commit messages follow the short conventional style already in the log:
 
 ```bash
 cargo fmt --all -- --check
-cargo clippy --all-targets -- -D warnings
-cargo test
+cargo clippy --locked --all-targets -- -D warnings
+cargo test --locked
 cargo doc --no-deps
 ```
 
@@ -34,8 +34,8 @@ check enforces these:
 
 - **Issue first.** Open an issue and wait until a maintainer labels it
   `accepted`, then write `Closes #N` in the pull request.
-- **Tests.** Every change to `src/` needs a test change under `tests/`. A
-  bug fix needs a test that fails without the fix.
+- **Tests.** Every change to `src/` needs a test: a new `#[test]` or a
+  change under `tests/`. A bug fix needs a test that fails without the fix.
 - **Small.** At most 400 changed lines (`Cargo.lock` not counted), one issue
   per pull request.
 - **No suppressions.** No `#[allow(`, `#[expect(` or `#[rustfmt::skip]`, no
